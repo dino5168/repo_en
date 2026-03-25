@@ -1,5 +1,6 @@
 interface AppConfig {
   appTitle: string
+  appName: string
   apiUrl: string
   menuConfigFile: string
   featureFlags: {

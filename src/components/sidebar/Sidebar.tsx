@@ -2,6 +2,7 @@ import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useMenuStore } from '@/stores/menu.store'
 import { SidebarSection } from './SidebarSection'
+import { appConfig } from '@/config/app-config'
 
 function SidebarContent({ onClose }: { onClose?: () => void }) {
   const { config } = useMenuStore()
@@ -17,7 +18,7 @@ function SidebarContent({ onClose }: { onClose?: () => void }) {
               <div className="w-1.5 h-1.5 rounded-full bg-[#2a7a4b]" />
             </div>
           </div>
-          <span className="text-xl font-semibold text-gray-900 tracking-tight">Donezo</span>
+          <span className="text-xl font-semibold text-gray-900 tracking-tight">{appConfig.appName}</span>
         </div>
 
         {onClose && (
