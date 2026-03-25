@@ -1,0 +1,47 @@
+graph TD
+    %% ── 進入點 ──
+    HTML["index.html\n#root"]
+    MAIN["main.tsx\ncreatRoot + StrictMode"]
+    CSS["index.css\nTailwind v4 + shadcn theme"]
+
+    HTML --> MAIN
+    CSS --> MAIN
+
+    %% ── 根元件 ──
+    APP["App.tsx\n根元件（佈局層）"]
+    MAIN --> APP
+
+    %% ── Router（尚未建立）──
+    ROUTER["[ Router ]\n尚未建立\nreact-router-dom"]
+    APP --> ROUTER
+
+    %% ── Pages（尚未建立）──
+    PAGE_HOME["[ HomePage ]\n尚未建立"]
+    ROUTER --> PAGE_HOME
+
+    %% ── 現有元件 ──
+    BTN["Button\nsrc/components/ui/button.tsx"]
+    APP --> BTN
+
+    %% ── 元件 → shadcn/ui 底層 ──
+    BASE_UI["@base-ui/react/button\nRadix / Base UI 無障礙底層"]
+    BTN --> BASE_UI
+
+    %% ── 工具層 ──
+    UTILS["cn()\nsrc/lib/utils.ts\nclsx + tailwind-merge"]
+    BTN --> UTILS
+
+    %% ── Zustand Stores（尚未建立）──
+    STORE["[ Zustand Stores ]\n尚未建立\nsrc/stores/"]
+    PAGE_HOME --> STORE
+
+    %% ── 樣式系統 ──
+    TW["Tailwind CSS v4\n@tailwindcss/vite"]
+    CVA["class-variance-authority\nvariant 系統"]
+    BTN --> CVA
+    CVA --> TW
+
+    %% ── 樣式說明 ──
+    style ROUTER fill:#f5f5f5,stroke:#bbb,color:#888,stroke-dasharray:5 5
+    style PAGE_HOME fill:#f5f5f5,stroke:#bbb,color:#888,stroke-dasharray:5 5
+    style STORE fill:#f5f5f5,stroke:#bbb,color:#888,stroke-dasharray:5 5
