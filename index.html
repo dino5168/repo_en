@@ -4,7 +4,12 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Runtime config：部署時替換 /config.js，不需重新 build -->
+    <script src="/config.js"></script>
     <title>app</title>
+    <script>
+      document.title = window.__APP_CONFIG__?.appTitle ?? 'app'
+    </script>
   </head>
   <body>
     <div id="root"></div>
