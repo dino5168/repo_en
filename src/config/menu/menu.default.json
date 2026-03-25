@@ -1,0 +1,46 @@
+{
+  "version": "1.0.0",
+  "sections": [
+    {
+      "key": "main",
+      "items": [
+        {
+          "key": "dashboard",
+          "label": "Dashboard",
+          "icon": "LayoutDashboard",
+          "children": [
+            { "key": "overview",     "label": "Overview",     "icon": "PieChart",    "path": "/" },
+            { "key": "performance",  "label": "Performance",  "icon": "TrendingUp",  "path": "/performance" },
+            { "key": "activity",     "label": "Activity",     "icon": "Activity",    "path": "/activity" },
+            { "key": "favourites",   "label": "Favourites",   "icon": "Star",        "path": "/favourites" }
+          ]
+        },
+        {
+          "key": "tasks",
+          "label": "Tasks",
+          "icon": "CheckSquare",
+          "path": "/tasks",
+          "badge": { "text": "12+", "variant": "default" }
+        },
+        {
+          "key": "calendar",
+          "label": "Calendar",
+          "icon": "Calendar",
+          "path": "/calendar"
+        },
+        {
+          "key": "analytics",
+          "label": "Analytics",
+          "icon": "BarChart2",
+          "path": "/analytics"
+        },
+        {
+          "key": "team",
+          "label": "Team",
+          "icon": "Users",
+          "path": "/team"
+        }
+      ]
+    }
+  ]
+}

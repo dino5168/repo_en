@@ -1,6 +1,15 @@
-import { Sidebar } from '@/components/Sidebar'
+import { useEffect } from 'react'
+import { Sidebar } from '@/components/sidebar/Sidebar'
+import { useMenuStore } from '@/stores/menu.store'
 
 function App() {
+  const initialize = useMenuStore(s => s.initialize)
+
+  useEffect(() => {
+    // 無 auth 時以空 roles/permissions 初始化（顯示全部無限制項目）
+    initialize([], [])
+  }, [initialize])
+
   return (
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
