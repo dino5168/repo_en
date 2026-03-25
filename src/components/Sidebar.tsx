@@ -1,46 +1,7 @@
 import { useState } from 'react'
-import {
-  LayoutDashboard, CheckSquare, Calendar, BarChart2, Users,
-  ChevronDown, Menu, X,
-  PieChart, TrendingUp, Activity, Star,
-} from 'lucide-react'
+import { ChevronDown, Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
-
-interface SubItem {
-  label: string
-  href?: string
-}
-
-interface NavItem {
-  label: string
-  icon: React.ReactNode
-  badge?: string
-  subItems?: SubItem[]
-}
-
-const navItems: NavItem[] = [
-  {
-    label: 'Dashboard',
-    icon: <LayoutDashboard size={20} />,
-    subItems: [
-      { label: 'Overview' },
-      { label: 'Performance' },
-      { label: 'Activity' },
-      { label: 'Favourites' },
-    ],
-  },
-  { label: 'Tasks',     icon: <CheckSquare size={20} />, badge: '12+' },
-  { label: 'Calendar',  icon: <Calendar size={20} /> },
-  { label: 'Analytics', icon: <BarChart2 size={20} /> },
-  { label: 'Team',      icon: <Users size={20} /> },
-]
-
-const subIcons: Record<string, React.ReactNode> = {
-  Overview:    <PieChart size={15} />,
-  Performance: <TrendingUp size={15} />,
-  Activity:    <Activity size={15} />,
-  Favourites:  <Star size={15} />,
-}
+import { navItems, subIcons, type NavItem, type SubItem } from '@/config/navigation'
 
 // ── Sidebar content (shared between mobile & desktop) ──────────────────────
 interface SidebarContentProps {
