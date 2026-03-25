@@ -59,7 +59,8 @@ function SidebarContent({ onClose }: SidebarContentProps) {
     setActive(item.label)
   }
 
-  function handleSubClick(sub: SubItem) {
+  function handleSubClick(sub: SubItem, parentLabel: string) {
+    setActive(parentLabel)
     setActiveSub(sub.label)
     onClose?.()
   }
@@ -145,32 +146,41 @@ function SidebarContent({ onClose }: SidebarContentProps) {
                 )}
               </button>
 
-              {/* SubMenu */}
-              {hasSubItems && isOpen && (
-                <div className="ml-9 mt-0.5 mb-1 flex flex-col gap-0.5 border-l-2 border-gray-100 pl-3">
-                  {item.subItems!.map((sub) => {
-                    const isSubActive = activeSub === sub.label
-                    return (
-                      <button
-                        key={sub.label}
-                        onClick={() => handleSubClick(sub)}
-                        className={cn(
-                          'flex items-center gap-2 px-2 py-2 rounded-md text-xs transition-colors w-full text-left',
-                          isSubActive
-                            ? 'text-[#2a7a4b] font-semibold bg-[#2a7a4b]/8'
-                            : 'text-gray-400 hover:text-gray-700 hover:bg-gray-50'
-                        )}
-                      >
-                        <span className={cn(isSubActive ? 'text-[#2a7a4b]' : 'text-gray-300')}>
-                          {subIcons[sub.label]}
-                        </span>
-                        {sub.label}
-                        {isSubActive && (
-                          <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#2a7a4b]" />
-                        )}
-                      </button>
-                    )
-                  })}
+              {/* SubMenu — animated slide */}
+              {hasSubItems && (
+                <div
+                  className={cn(
+                    'grid transition-[grid-template-rows] duration-300 ease-in-out',
+                    isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                  )}
+                >
+                  <div className="overflow-hidden">
+                    <div className="ml-9 mt-0.5 mb-1 flex flex-col gap-0.5 border-l-2 border-gray-100 pl-3">
+                      {item.subItems!.map((sub) => {
+                        const isSubActive = activeSub === sub.label
+                        return (
+                          <button
+                            key={sub.label}
+                            onClick={() => handleSubClick(sub, item.label)}
+                            className={cn(
+                              'flex items-center gap-2 px-2 py-2 rounded-md text-xs transition-colors w-full text-left',
+                              isSubActive
+                                ? 'text-[#2a7a4b] font-semibold bg-[#2a7a4b]/8'
+                                : 'text-gray-400 hover:text-gray-700 hover:bg-gray-50'
+                            )}
+                          >
+                            <span className={cn(isSubActive ? 'text-[#2a7a4b]' : 'text-gray-300')}>
+                              {subIcons[sub.label]}
+                            </span>
+                            {sub.label}
+                            {isSubActive && (
+                              <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#2a7a4b]" />
+                            )}
+                          </button>
+                        )
+                      })}
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
